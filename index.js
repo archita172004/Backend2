@@ -39,7 +39,8 @@ app.set("view engine", "ejs");
 
 //redering index page in view (where the form is )
 app.get("/", (req, res) => {
-  res.render("index", { name: "Archita" });
+  // res.render("index");
+  res.render("login");
 });
 
 //rendering success page in view
@@ -56,6 +57,14 @@ app.post("/contact", async (req, res) => {
 //setting up users route
 app.get("/users", (req, res) => {
   res.json({ users });
+});
+
+app.post("/login", (req, res) => {
+  res.cookie("token", "iamin", {
+    httpOnly: true,
+    expires: new Date(Date.now() + 60 * 1000),
+  });
+  res.redirect("/");
 });
 
 //==================================================
