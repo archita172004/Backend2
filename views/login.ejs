@@ -7,8 +7,18 @@
     <link href="styles.css" rel="stylesheet" />
   </head>
   <body>
-    <form action="/login" method="post">
-      <button type="submit">Login</button>
+    <form method="post" action="/login">
+      <h3>Login Now</h3>
+      <input
+        type="email"
+        name="email"
+        id=""
+        placeholder="Email"
+        value="<%=locals.email%>"
+      />
+      <input type="password" name="password" id="" placeholder="password" />
+      <p class="error"><%=locals.message%></p>
+      <button type="submit">Log In</button>
     </form>
   </body>
 </html>
