@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
 });
+
 //collection name Message
 const User = mongoose.model("User", userSchema);
 
@@ -99,6 +100,7 @@ app.post("/login", async (req, res) => {
     return res.render("login", { email, message: "incorrect password" });
 
   const token = jwt.sign({ _id: user._id }, "kjdjfkkwokjSADAKNFSND");
+
   res.cookie("token", token, {
     httpOnly: true,
     expires: new Date(Date.now() + 60 * 1000),
@@ -124,7 +126,9 @@ app.post("/register", async (req, res) => {
       hashedpassword,
     }))
   );
+
   const token = jwt.sign({ _id: user._id }, "kjdjfkkwokjSADAKNFSND");
+
   res.cookie("token", token, {
     httpOnly: true,
     expires: new Date(Date.now() + 60 * 1000),
